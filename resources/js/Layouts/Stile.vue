@@ -10,8 +10,8 @@
             <v-toolbar-title>Vuetify</v-toolbar-title>
 
             <v-spacer></v-spacer>
-
             <v-menu
+                v-if="userName"
                 transition="slide-y-transition"
             >
                 <template v-slot:activator="{ props }">
@@ -45,7 +45,12 @@
 
 <script setup>
 import { Link } from '@inertiajs/vue3';
+import { computed } from 'vue'
+import { usePage } from '@inertiajs/vue3'
 
+const page = usePage()
+
+const userName = computed(() => page.props.user)
 </script>
 
 <style scoped>

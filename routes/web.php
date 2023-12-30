@@ -1,19 +1,16 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ConfigurationController;
+use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-/*Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});*/
+Route::get('/', [FrontController::class, 'index'])->name('index');
+Route::get('/configuration', [ConfigurationController::class, 'index'])->name('configuration');
+Route::post('/configuration', [ConfigurationController::class, 'saveConfiguration'])->name('configuration.save');
 
 //-------------------Admin------------------------------
 Route::group(
