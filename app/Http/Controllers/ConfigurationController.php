@@ -21,7 +21,7 @@ class ConfigurationController extends Controller
             $file->storeAs('logo/', $filename, 'public');
         }
 
-        Configuration::create($request->except('logo'));
+        Configuration::create($request->except(['logo', 'eseguitaConfigurazione']));
         return redirect()->route('index');
     }
 }

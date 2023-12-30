@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-//        $this->call(RuoliSeeder::class);
+        $this->call(RuoliSeeder::class);
 //        $this->call(StatoApaSeeder::class);
 //        $this->call(FornitoriSeeder::class);
 //        $this->call(CategorieSeeder::class);

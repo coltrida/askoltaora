@@ -5,13 +5,148 @@
             prominent
             color="primary"
         >
-            <v-app-bar-nav-icon></v-app-bar-nav-icon>
+            <v-app-bar-nav-icon class="d-flex d-sm-none"></v-app-bar-nav-icon>
 
-            <v-toolbar-title>Vuetify</v-toolbar-title>
+            <v-toolbar-title>{{ nomeAzienda }}</v-toolbar-title>
+
+            <span v-if="user.ruolo.nome === 'Admin'">
+                <Link :href="route('admin.home')">
+                    <v-btn :variant="$page.component === 'Admin/Home' ? 'tonal' : 'text'">
+                        Home
+                    </v-btn>
+                </Link>
+
+                    <v-menu>
+                        <template v-slot:activator="{ props }">
+                            <v-btn :variant="$page.component === 'Admin/Tags' ? 'tonal' : 'text'"  v-bind="props">
+                                Clients
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Civitanova
+                                </v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Fabriano
+                                </v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
+
+                    <v-menu>
+                        <template v-slot:activator="{ props }">
+                            <v-btn :variant="$page.component === 'Admin/Tags' ? 'tonal' : 'text'"  v-bind="props">
+                                Filiali
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    lista
+                                </v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Recapiti
+                                </v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
+
+                    <v-menu>
+                        <template v-slot:activator="{ props }">
+                            <v-btn :variant="$page.component === 'Admin/Tags' ? 'tonal' : 'text'"  v-bind="props">
+                                Personale
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Lista
+                                </v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Associa
+                                </v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
+
+                    <v-menu>
+                        <template v-slot:activator="{ props }">
+                            <v-btn :variant="$page.component === 'Admin/Tags' ? 'tonal' : 'text'"  v-bind="props">
+                                Fornitori
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Lista
+                                </v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Prodotti
+                                </v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
+
+                    <v-menu>
+                        <template v-slot:activator="{ props }">
+                            <v-btn :variant="$page.component === 'Admin/Tags' ? 'tonal' : 'text'"  v-bind="props">
+                                Magazzini
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Civitanova
+                                </v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Fabriano
+                                </v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
+                    <v-btn :variant="$page.component === 'Admin/Albums' ? 'tonal' : 'text'">
+                        Prove
+                    </v-btn>
+                    <v-btn :variant="$page.component === 'Admin/Tags' ? 'tonal' : 'text'">
+                        Fatture
+                    </v-btn>
+
+                    <v-menu>
+                        <template v-slot:activator="{ props }">
+                            <v-btn :variant="$page.component === 'Admin/Tags' ? 'tonal' : 'text'"  v-bind="props">
+                                Statistiche
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Fatturati
+                                </v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Canali
+                                </v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
+            </span>
 
             <v-spacer></v-spacer>
+
             <v-menu
-                v-if="userName"
+                v-if="user"
                 transition="slide-y-transition"
             >
                 <template v-slot:activator="{ props }">
@@ -27,8 +162,18 @@
                 <v-list>
                     <v-list-item>
                         <v-list-item-title>
+                            {{user.nome}}
+                        </v-list-item-title>
+                    </v-list-item>
+                    <v-list-item>
+                        <v-list-item-title>
+                            Settings
+                        </v-list-item-title>
+                    </v-list-item>
+                    <v-list-item>
+                        <v-list-item-title>
                             <Link
-                                :href="route('logout')" method="post"
+                                :href="route('logout')" method="post" as="button"
                                 class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                             >
                                 Logout
@@ -44,13 +189,14 @@
 </template>
 
 <script setup>
-import { Link } from '@inertiajs/vue3';
-import { computed } from 'vue'
-import { usePage } from '@inertiajs/vue3'
+import {Link} from '@inertiajs/vue3';
+import {computed} from 'vue'
+import {usePage} from '@inertiajs/vue3'
 
 const page = usePage()
 
-const userName = computed(() => page.props.user)
+const user = computed(() => page.props.user);
+const nomeAzienda = computed(() => page.props.nomeAzienda)
 </script>
 
 <style scoped>

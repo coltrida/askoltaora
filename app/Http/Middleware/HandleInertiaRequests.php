@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Configuration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
@@ -36,8 +37,9 @@ class HandleInertiaRequests extends Middleware
 
             // Lazily...
             'user' => fn () => $request->user()
-                ? $request->user()->nome
+                ? $request->user()
                 : null,
+            'nomeAzienda' => Configuration::first() ? Configuration::first()->nomeAzienda : null
         ]);
     }
 }

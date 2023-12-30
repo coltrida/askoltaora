@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', [FrontController::class, 'index'])->name('index');
+
+//-------------------Configurazione------------------------------
 Route::get('/configuration', [ConfigurationController::class, 'index'])->name('configuration');
 Route::post('/configuration', [ConfigurationController::class, 'saveConfiguration'])->name('configuration.save');
 
@@ -19,7 +21,7 @@ Route::group(
         'prefix' => 'admin'
     ],
     function() {
-        Route::get('/home', [AdminController::class, 'home']);
+        Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
 
     });
 

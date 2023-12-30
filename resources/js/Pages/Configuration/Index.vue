@@ -231,7 +231,6 @@ export default {
                 telefonoAzienda: this.telefonoAzienda,
                 magazzinoCentralizzato: this.magazzinoCentralizzato,
                 logo: this.logo,
-                eseguitaConfigurazione: 1,
             })
         }
     }
