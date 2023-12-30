@@ -11,7 +11,9 @@
 
             <v-spacer></v-spacer>
 
-            <v-menu>
+            <v-menu
+                transition="slide-y-transition"
+            >
                 <template v-slot:activator="{ props }">
                     <v-btn icon v-bind="props">
                         <v-avatar>
@@ -24,7 +26,15 @@
                 </template>
                 <v-list>
                     <v-list-item>
-                        <v-list-item-title>Logout</v-list-item-title>
+                        <v-list-item-title>
+                            <Link
+                                :href="route('logout')" method="post"
+                                class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            >
+                                Logout
+                            </Link>
+
+                        </v-list-item-title>
                     </v-list-item>
                 </v-list>
             </v-menu>
@@ -33,10 +43,9 @@
     </div>
 </template>
 
-<script>
-export default {
-    name: "Stile"
-}
+<script setup>
+import { Link } from '@inertiajs/vue3';
+
 </script>
 
 <style scoped>

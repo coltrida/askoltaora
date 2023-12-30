@@ -1,11 +1,10 @@
 <template>
+    <Head title="Home" />
     <h2>Home Admin</h2>
 </template>
 
-<script>
-export default {
-    name: "Home"
-}
+<script setup>
+import { Head } from '@inertiajs/vue3';
 </script>
 
 <style scoped>

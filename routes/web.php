@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -14,11 +15,16 @@ use Inertia\Inertia;
     ]);
 });*/
 
-Route::get('/', function () {
-    return Inertia::render('Admin/Home');
-});
+//-------------------Admin------------------------------
+Route::group(
+    [
+        'middleware' => ['auth','verifyIsAdmin'],
+        'prefix' => 'admin'
+    ],
+    function() {
+        Route::get('/home', [AdminController::class, 'home']);
 
-
+    });
 
 
 

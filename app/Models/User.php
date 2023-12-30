@@ -17,11 +17,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -40,6 +36,35 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
+
+    public function ruolo()
+    {
+        return $this->belongsTo(Ruolo::class);
+    }
+
+    public function isAdmin() {
+        return $this->ruolo->nome === 'Admin';
+    }
+
+    public function filiali()
+    {
+        return $this->belongsToMany(Filiale::class, 'filiale_user', 'user_id', 'filiale_id')
+            ->withPivot(['id']);
+    }
+
+    public function appuntamenti()
+    {
+        return $this->hasMany(Appuntamento::class);
+    }
+
+    public function prove()
+    {
+        return $this->hasMany(Prova::class, 'user_id', 'id');
+    }
+
+    public function fatturati()
+    {
+        return $this->hasMany(Fatturati::class, 'user_id', 'id');
+    }
 }
