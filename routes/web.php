@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ConfigurationController;
 use App\Http\Controllers\FrontController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -22,6 +23,23 @@ Route::group(
     ],
     function() {
         Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
+        Route::get('/ruoli', [AdminController::class, 'ruoli'])->name('admin.ruoli');
+        Route::post('/ruoli', [AdminController::class, 'addRuolo'])->name('admin.ruoli.add');
+        Route::get('/filiali', [AdminController::class, 'filiali'])->name('admin.filiali');
+        Route::post('/filiali', [AdminController::class, 'addFiliali'])->name('admin.filiali.add');
+        Route::get('/fornitori', [AdminController::class, 'fornitori'])->name('admin.fornitori');
+        Route::post('/fornitori', [AdminController::class, 'addFornitore'])->name('admin.fornitori.add');
+        Route::get('/clienti/{idFiliale}', [UserController::class, 'clienti'])->name('user.clienti');
+    });
+
+//-------------------User------------------------------
+Route::group(
+    [
+        'middleware' => ['auth'],
+        'prefix' => 'user'
+    ],
+    function() {
+        Route::get('/home', [UserController::class, 'home'])->name('user.home');
 
     });
 

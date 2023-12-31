@@ -8,6 +8,7 @@ import { ZiggyVue } from '../../vendor/tightenco/ziggy/dist/vue.m';
 import Stile from './Layouts/Stile.vue';
 
 import '@mdi/font/css/materialdesignicons.css' // Ensure you are using css-loader
+import 'vuetify/styles'
 import { createVuetify } from 'vuetify'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'

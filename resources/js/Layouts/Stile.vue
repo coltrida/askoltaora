@@ -9,8 +9,9 @@
 
             <v-toolbar-title>{{ nomeAzienda }}</v-toolbar-title>
 
-            <span v-if="user.ruolo.nome === 'Admin'">
-                <Link :href="route('admin.home')">
+            <span v-if="user">
+                <span v-if="user.ruolo.nome === 'Admin'">
+                    <Link :href="route('admin.home')">
                     <v-btn :variant="$page.component === 'Admin/Home' ? 'tonal' : 'text'">
                         Home
                     </v-btn>
@@ -23,14 +24,20 @@
                             </v-btn>
                         </template>
                         <v-list>
+                            <Link
+                                v-for="(item, index) in filiali"
+                                :key="index"
+                                :href="route('user.clienti', item.id)"
+                            >
+                                <v-list-item>
+                                    <v-list-item-title>
+                                        {{item.nome}}
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </Link>
                             <v-list-item>
                                 <v-list-item-title>
-                                    Civitanova
-                                </v-list-item-title>
-                            </v-list-item>
-                            <v-list-item>
-                                <v-list-item-title>
-                                    Fabriano
+                                    TUTTE
                                 </v-list-item-title>
                             </v-list-item>
                         </v-list>
@@ -43,11 +50,13 @@
                             </v-btn>
                         </template>
                         <v-list>
-                            <v-list-item>
-                                <v-list-item-title>
-                                    lista
-                                </v-list-item-title>
-                            </v-list-item>
+                            <Link :href="route('admin.filiali')">
+                                <v-list-item>
+                                    <v-list-item-title>
+                                        lista
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </Link>
                             <v-list-item>
                                 <v-list-item-title>
                                     Recapiti
@@ -83,11 +92,13 @@
                             </v-btn>
                         </template>
                         <v-list>
-                            <v-list-item>
-                                <v-list-item-title>
-                                    Lista
-                                </v-list-item-title>
-                            </v-list-item>
+                            <Link :href="route('admin.fornitori')">
+                                <v-list-item>
+                                    <v-list-item-title>
+                                        Lista
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </Link>
                             <v-list-item>
                                 <v-list-item-title>
                                     Prodotti
@@ -115,12 +126,63 @@
                             </v-list-item>
                         </v-list>
                     </v-menu>
-                    <v-btn :variant="$page.component === 'Admin/Albums' ? 'tonal' : 'text'">
-                        Prove
-                    </v-btn>
-                    <v-btn :variant="$page.component === 'Admin/Tags' ? 'tonal' : 'text'">
-                        Fatture
-                    </v-btn>
+
+                    <v-menu>
+                        <template v-slot:activator="{ props }">
+                            <v-btn :variant="$page.component === 'Admin/Tags' ? 'tonal' : 'text'"  v-bind="props">
+                                Prove
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Lista
+                                </v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Fatture
+                                </v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
+
+                    <v-menu>
+                        <template v-slot:activator="{ props }">
+                            <v-btn :variant="$page.component === 'Admin/Tags' ? 'tonal' : 'text'"  v-bind="props">
+                                Settings
+                            </v-btn>
+                        </template>
+                        <v-list>
+                            <Link :href="route('admin.ruoli')">
+                                <v-list-item>
+                                    <v-list-item-title>
+                                        Ruoli
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </Link>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    StatoApa
+                                </v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Categorie
+                                </v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Tipologie
+                                </v-list-item-title>
+                            </v-list-item>
+                            <v-list-item>
+                                <v-list-item-title>
+                                    Canali
+                                </v-list-item-title>
+                            </v-list-item>
+                        </v-list>
+                    </v-menu>
 
                     <v-menu>
                         <template v-slot:activator="{ props }">
@@ -141,8 +203,8 @@
                             </v-list-item>
                         </v-list>
                     </v-menu>
+                </span>
             </span>
-
             <v-spacer></v-spacer>
 
             <v-menu
@@ -163,11 +225,6 @@
                     <v-list-item>
                         <v-list-item-title>
                             {{user.nome}}
-                        </v-list-item-title>
-                    </v-list-item>
-                    <v-list-item>
-                        <v-list-item-title>
-                            Settings
                         </v-list-item-title>
                     </v-list-item>
                     <v-list-item>
@@ -197,6 +254,7 @@ const page = usePage()
 
 const user = computed(() => page.props.user);
 const nomeAzienda = computed(() => page.props.nomeAzienda)
+const filiali = computed(() => page.props.filiali)
 </script>
 
 <style scoped>

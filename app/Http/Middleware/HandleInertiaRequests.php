@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\Configuration;
+use App\Models\Filiale;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
@@ -39,7 +40,8 @@ class HandleInertiaRequests extends Middleware
             'user' => fn () => $request->user()
                 ? $request->user()
                 : null,
-            'nomeAzienda' => Configuration::first() ? Configuration::first()->nomeAzienda : null
+            'nomeAzienda' => Configuration::first() ? Configuration::first()->nomeAzienda : null,
+            'filiali' => Filiale::orderBy('nome')->get(),
         ]);
     }
 }
