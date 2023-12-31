@@ -161,11 +161,13 @@
                                     </v-list-item-title>
                                 </v-list-item>
                             </Link>
+                            <Link :href="route('admin.statoApa')">
                             <v-list-item>
                                 <v-list-item-title>
                                     StatoApa
                                 </v-list-item-title>
                             </v-list-item>
+                            </Link>
                             <v-list-item>
                                 <v-list-item-title>
                                     Categorie

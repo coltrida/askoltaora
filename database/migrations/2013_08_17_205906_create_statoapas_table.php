@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('statoapas', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->text('descrizione')->nullable();
             $table->timestamps();
         });
     }

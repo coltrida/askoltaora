@@ -17,28 +17,36 @@ class StatoApaSeeder extends Seeder
     {
         Statoapa::insert([
             [
-                'nome' => 'MAGAZZINO'
+                'nome' => 'MAGAZZINO',
+                'descrizione' => 'apparecchio in magazzino'
             ],
             [
-                'nome' => 'IN PROVA'
+                'nome' => 'IN PROVA',
+                'descrizione' => 'apparecchio in prova al paziente'
             ],
             [
-                'nome' => 'SPEDITO'
+                'nome' => 'SPEDITO',
+                'descrizione' => 'apparecchio spedito alla filiale'
             ],
             [
-                'nome' => 'RICHIESTO'
+                'nome' => 'RICHIESTO',
+                'descrizione' => 'apparecchio richiesto dalla filiale'
             ],
             [
-                'nome' => 'PROVA IN CORSO'
+                'nome' => 'PROVA IN CORSO',
+                'descrizione' => ''
             ],
             [
-                'nome' => 'FATTURATO'
+                'nome' => 'FATTURATO',
+                'descrizione' => 'apparecchio fatturato'
             ],
             [
-                'nome' => 'RESO'
+                'nome' => 'RESO',
+                'descrizione' => 'apparecchio reso dal paziente'
             ],
             [
-                'nome' => 'IN CARICO'
+                'nome' => 'IN CARICO',
+                'descrizione' => ''
             ],
         ]);
     }

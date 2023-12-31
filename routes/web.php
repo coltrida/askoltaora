@@ -25,6 +25,8 @@ Route::group(
         Route::get('/home', [AdminController::class, 'home'])->name('admin.home');
         Route::get('/ruoli', [AdminController::class, 'ruoli'])->name('admin.ruoli');
         Route::post('/ruoli', [AdminController::class, 'addRuolo'])->name('admin.ruoli.add');
+        Route::get('/statoApa', [AdminController::class, 'statoApa'])->name('admin.statoApa');
+        Route::post('/statoApa', [AdminController::class, 'addStatoApa'])->name('admin.statoApa.add');
         Route::get('/filiali', [AdminController::class, 'filiali'])->name('admin.filiali');
         Route::post('/filiali', [AdminController::class, 'addFiliali'])->name('admin.filiali.add');
         Route::get('/fornitori', [AdminController::class, 'fornitori'])->name('admin.fornitori');

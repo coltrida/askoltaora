@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Services\FilialeService;
 use App\Services\FornitoreService;
 use App\Services\RuoloService;
+use App\Services\StatoApaService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -25,6 +26,18 @@ class AdminController extends Controller
     public function addRuolo(Request $request, RuoloService $ruoloService)
     {
         $ruoloService->addRuolo($request);
+    }
+
+    public function statoApa(StatoApaService $statoApaService)
+    {
+        return Inertia::render('Admin/StatoApa', [
+            'statoApa' => $statoApaService->lista()
+        ]);
+    }
+
+    public function addStatoApa(Request $request, StatoApaService $statoApaService)
+    {
+        $statoApaService->addStatoApa($request);
     }
 
     public function filiali()
