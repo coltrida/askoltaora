@@ -15,7 +15,8 @@ return new class extends Migration
     {
         Schema::create('canalis', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
+            $table->string('primario');
+            $table->bigInteger('secondario')->nullable();
             $table->timestamps();
         });
     }

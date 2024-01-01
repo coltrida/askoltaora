@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CanaleService;
+use App\Services\CategoriaService;
 use App\Services\FilialeService;
 use App\Services\FornitoreService;
 use App\Services\RuoloService;
 use App\Services\StatoApaService;
+use App\Services\TipologiaService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -38,6 +41,42 @@ class AdminController extends Controller
     public function addStatoApa(Request $request, StatoApaService $statoApaService)
     {
         $statoApaService->addStatoApa($request);
+    }
+
+    public function categorie(CategoriaService $categoriaService)
+    {
+        return Inertia::render('Admin/Categorie', [
+            'categorie' => $categoriaService->lista()
+        ]);
+    }
+
+    public function addCategoria(Request $request, CategoriaService $categoriaService)
+    {
+        $categoriaService->addCategoria($request);
+    }
+
+    public function tipologie(TipologiaService $tipologiaService)
+    {
+        return Inertia::render('Admin/Tipologie', [
+            'tipologie' => $tipologiaService->lista()
+        ]);
+    }
+
+    public function addTipologia(Request $request, TipologiaService $tipologiaService)
+    {
+        $tipologiaService->addTipologia($request);
+    }
+
+    public function canali(CanaleService $canaleService)
+    {
+        return Inertia::render('Admin/Canali', [
+            'canali' => $canaleService->lista()
+        ]);
+    }
+
+    public function addCanale(Request $request, CanaleService $canaleService)
+    {
+        $canaleService->addCanale($request);
     }
 
     public function filiali()

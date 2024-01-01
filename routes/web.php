@@ -27,6 +27,12 @@ Route::group(
         Route::post('/ruoli', [AdminController::class, 'addRuolo'])->name('admin.ruoli.add');
         Route::get('/statoApa', [AdminController::class, 'statoApa'])->name('admin.statoApa');
         Route::post('/statoApa', [AdminController::class, 'addStatoApa'])->name('admin.statoApa.add');
+        Route::get('/categorie', [AdminController::class, 'categorie'])->name('admin.categorie');
+        Route::post('/categorie', [AdminController::class, 'addCategoria'])->name('admin.categorie.add');
+        Route::get('/tipologie', [AdminController::class, 'tipologie'])->name('admin.tipologie');
+        Route::post('/tipologie', [AdminController::class, 'addTipologia'])->name('admin.tipologie.add');
+        Route::get('/canali', [AdminController::class, 'canali'])->name('admin.canali');
+        Route::post('/canali', [AdminController::class, 'addCanale'])->name('admin.canali.add');
         Route::get('/filiali', [AdminController::class, 'filiali'])->name('admin.filiali');
         Route::post('/filiali', [AdminController::class, 'addFiliali'])->name('admin.filiali.add');
         Route::get('/fornitori', [AdminController::class, 'fornitori'])->name('admin.fornitori');

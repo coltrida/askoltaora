@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Canale;
+use App\Models\Dottore;
+use App\Models\Recapito;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -15,27 +17,38 @@ class CanaliSeeder extends Seeder
      */
     public function run()
     {
+
+        $recapito = Recapito::first();
+        $dottore = Dottore::first();
+
         Canale::insert([
             [
-                'nome' => 'SCREENING'
+                'primario' => 'SCREENING',
+                'secondario' => $recapito->id
             ],
             [
-                'nome' => 'TLK FILIALE'
+                'primario' => 'TLK FILIALE',
+                'secondario' => null
             ],
             [
-                'nome' => 'CALL CENTER'
+                'primario' => 'CALL CENTER',
+                'secondario' => null
             ],
             [
-                'nome' => 'MEDICO'
+                'primario' => 'MEDICO',
+                'secondario' => $dottore->id
             ],
             [
-                'nome' => 'PASSAPAROLA'
+                'primario' => 'PASSAPAROLA',
+                'secondario' => null
             ],
             [
-                'nome' => 'SOCIAL'
+                'primario' => 'SOCIAL',
+                'secondario' => null
             ],
             [
-                'nome' => 'VETRINA'
+                'primario' => 'VETRINA',
+                'secondario' => null
             ],
         ]);
     }

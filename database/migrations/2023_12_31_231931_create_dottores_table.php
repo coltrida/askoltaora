@@ -8,27 +8,24 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('tipos', function (Blueprint $table) {
+        Schema::create('dottores', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('filiale_id');
+            $table->foreign('filiale_id')->references('id')->on('filiales');
             $table->string('nome');
-            $table->integer('giorniToRecall')->nullable();
-            $table->text('descrizione')->nullable();
+            $table->string('citta')->nullable();
             $table->timestamps();
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('tipos');
+        Schema::dropIfExists('dottores');
     }
 };

@@ -168,21 +168,27 @@
                                 </v-list-item-title>
                             </v-list-item>
                             </Link>
+                            <Link :href="route('admin.categorie')">
                             <v-list-item>
                                 <v-list-item-title>
                                     Categorie
                                 </v-list-item-title>
                             </v-list-item>
+                            </Link>
+                            <Link :href="route('admin.tipologie')">
                             <v-list-item>
                                 <v-list-item-title>
                                     Tipologie
                                 </v-list-item-title>
                             </v-list-item>
+                            </Link>
+                            <Link :href="route('admin.canali')">
                             <v-list-item>
                                 <v-list-item-title>
                                     Canali
                                 </v-list-item-title>
                             </v-list-item>
+                            </Link>
                         </v-list>
                     </v-menu>
 
