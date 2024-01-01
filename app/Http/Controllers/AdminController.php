@@ -6,10 +6,12 @@ use App\Services\CanaleService;
 use App\Services\CategoriaService;
 use App\Services\FilialeService;
 use App\Services\FornitoreService;
+use App\Services\DottoreService;
 use App\Services\RecapitoService;
 use App\Services\RuoloService;
 use App\Services\StatoApaService;
 use App\Services\TipologiaService;
+use App\Services\UserService;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -101,6 +103,32 @@ class AdminController extends Controller
     public function addRecapito(Request $request, RecapitoService $recapitoService)
     {
         $recapitoService->addRecapito($request);
+    }
+
+    public function medici(DottoreService $dottoreService)
+    {
+        return Inertia::render('Admin/Medici', [
+            'medici' => $dottoreService->listaPaginate(),
+            'filters' => \Illuminate\Support\Facades\Request::only('search')
+        ]);
+    }
+
+    public function addMedico(Request $request, DottoreService $dottoreService)
+    {
+        $dottoreService->addMedico($request);
+    }
+
+    public function personale(UserService $userService, RuoloService $ruoloService)
+    {
+        return Inertia::render('Admin/Personale', [
+            'personale' => $userService->lista(),
+            'ruoli' => $ruoloService->lista()
+        ]);
+    }
+
+    public function addPersonale(Request $request, UserService $userService)
+    {
+        $userService->addPersonale($request);
     }
 
     public function fornitori(FornitoreService $fornitoreService)

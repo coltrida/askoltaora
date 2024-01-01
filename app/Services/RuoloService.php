@@ -9,7 +9,7 @@ class RuoloService
 {
     public function lista()
     {
-        return Ruolo::orderBy('nome')->get();
+        return Ruolo::whereNot('nome', 'Admin')->orderBy('nome')->get();
     }
 
     public function addRuolo(Request $request)

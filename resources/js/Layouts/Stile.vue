@@ -64,11 +64,13 @@
                                     </v-list-item-title>
                                 </v-list-item>
                             </Link>
+                            <Link :href="route('admin.medici')">
                             <v-list-item>
                                 <v-list-item-title>
                                     Medici
                                 </v-list-item-title>
                             </v-list-item>
+                            </Link>
                         </v-list>
                     </v-menu>
 
@@ -79,11 +81,13 @@
                             </v-btn>
                         </template>
                         <v-list>
+                            <Link :href="route('admin.personale')">
                             <v-list-item>
                                 <v-list-item-title>
                                     Lista
                                 </v-list-item-title>
                             </v-list-item>
+                            </Link>
                             <v-list-item>
                                 <v-list-item-title>
                                     Associa

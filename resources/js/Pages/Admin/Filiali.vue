@@ -1,7 +1,7 @@
 <template>
     <Head title="Filiali" />
     <v-container>
-        <h2>Filiali</h2>
+        <div class="text-h4">Filiali</div>
 
         <v-form @submit.prevent="form.post('/admin/filiali', {
             onSuccess: () => form.reset(),
@@ -116,7 +116,11 @@
                 <td>{{ item.cap }}</td>
                 <td>{{ item.telefono }}</td>
                 <td>
-
+                    <v-btn color="red-darken-4">
+                        <v-icon
+                            icon="mdi-trash-can-outline"
+                        ></v-icon>
+                    </v-btn>
                 </td>
             </tr>
             </tbody>
