@@ -131,6 +131,24 @@ class AdminController extends Controller
         $userService->addPersonale($request);
     }
 
+    public function associa(UserService $userService)
+    {
+        return Inertia::render('Admin/Associa', [
+            'personaleNonAssociato' => $userService->personaleNonAssociato(),
+            'associazioni' => $userService->associazioni()
+        ]);
+    }
+
+    public function addAssocia(Request $request, UserService $userService)
+    {
+        $userService->addAssocia($request);
+    }
+
+    public function deAssocia($idFiliale, $idUser, UserService $userService)
+    {
+        $userService->deAssocia($idFiliale, $idUser);
+    }
+
     public function fornitori(FornitoreService $fornitoreService)
     {
         return Inertia::render('Admin/Fornitori', [

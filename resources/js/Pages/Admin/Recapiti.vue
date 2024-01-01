@@ -185,11 +185,9 @@
 </template>
 
 <script setup>
-import { Link, Head, router } from '@inertiajs/vue3';
-import {ref, watch} from "vue";
+import { Link, Head, router, usePage } from '@inertiajs/vue3';
+import {ref, watch, computed} from "vue";
 import { useForm } from '@inertiajs/vue3'
-import {computed} from 'vue'
-import {usePage} from '@inertiajs/vue3'
 
 const form = useForm({
     nome: null,

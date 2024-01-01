@@ -41,6 +41,9 @@ Route::group(
         Route::post('/medici', [AdminController::class, 'addMedico'])->name('admin.medici.add');
         Route::get('/personale', [AdminController::class, 'personale'])->name('admin.personale');
         Route::post('/personale', [AdminController::class, 'addPersonale'])->name('admin.personale.add');
+        Route::get('/associa', [AdminController::class, 'associa'])->name('admin.associa');
+        Route::post('/associa', [AdminController::class, 'addAssocia'])->name('admin.associa.add');
+        Route::delete('/deAssocia/{idFiliale}/{idUser}', [AdminController::class, 'deAssocia'])->name('admin.associa.delete');
         Route::get('/fornitori', [AdminController::class, 'fornitori'])->name('admin.fornitori');
         Route::post('/fornitori', [AdminController::class, 'addFornitore'])->name('admin.fornitori.add');
         Route::get('/clienti/{idFiliale}', [UserController::class, 'clienti'])->name('user.clienti');

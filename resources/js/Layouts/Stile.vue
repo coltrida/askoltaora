@@ -88,11 +88,13 @@
                                 </v-list-item-title>
                             </v-list-item>
                             </Link>
+                            <Link :href="route('admin.associa')">
                             <v-list-item>
                                 <v-list-item-title>
                                     Associa
                                 </v-list-item-title>
                             </v-list-item>
+                            </Link>
                         </v-list>
                     </v-menu>
 

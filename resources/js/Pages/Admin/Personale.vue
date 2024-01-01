@@ -94,7 +94,7 @@
 </template>
 
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import {Head} from '@inertiajs/vue3';
 import { useForm } from '@inertiajs/vue3'
 
 const form = useForm({
@@ -107,6 +107,7 @@ defineProps({
     personale: {type: Object},
     ruoli: {type: Object},
 });
+
 </script>
 
 <style scoped>
