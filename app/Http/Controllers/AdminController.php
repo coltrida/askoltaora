@@ -6,6 +6,7 @@ use App\Services\CanaleService;
 use App\Services\CategoriaService;
 use App\Services\FilialeService;
 use App\Services\FornitoreService;
+use App\Services\RecapitoService;
 use App\Services\RuoloService;
 use App\Services\StatoApaService;
 use App\Services\TipologiaService;
@@ -87,6 +88,19 @@ class AdminController extends Controller
     public function addFiliali(Request $request, FilialeService $filialeService)
     {
         $filialeService->addFiliale($request);
+    }
+
+    public function recapiti(RecapitoService $recapitoService)
+    {
+        return Inertia::render('Admin/Recapiti', [
+            'recapiti' => $recapitoService->listaPaginate(),
+            'filters' => \Illuminate\Support\Facades\Request::only('search')
+        ]);
+    }
+
+    public function addRecapito(Request $request, RecapitoService $recapitoService)
+    {
+        $recapitoService->addRecapito($request);
     }
 
     public function fornitori(FornitoreService $fornitoreService)

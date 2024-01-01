@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('indirizzo')->nullable();
             $table->string('citta')->nullable();
             $table->string('provincia')->nullable();
+            $table->string('cap')->nullable();
             $table->string('telefono')->nullable();
             $table->string('iban')->nullable();
             $table->timestamps();

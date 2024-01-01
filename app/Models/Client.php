@@ -11,6 +11,36 @@ class Client extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function setNomeAttribute($value)
+    {
+        $this->attributes['nome'] = strtoupper($value);
+    }
+
+    public function setCognomeAttribute($value)
+    {
+        $this->attributes['cognome'] = strtoupper($value);
+    }
+
+    public function setIndirizzoAttribute($value)
+    {
+        $this->attributes['indirizzo'] = strtoupper($value);
+    }
+
+    public function setCittaAttribute($value)
+    {
+        $this->attributes['citta'] = strtoupper($value);
+    }
+
+    public function setProvinciaAttribute($value)
+    {
+        $this->attributes['provincia'] = strtoupper($value);
+    }
+
+    public function setEmailAttribute($value)
+    {
+        $this->attributes['email'] = strtoupper($value);
+    }
+
     public function getDataNascitaFormattataAttribute()
     {
         return $this->dataNascita ? Carbon::make($this->dataNascita)->format('d-m-Y') : null;

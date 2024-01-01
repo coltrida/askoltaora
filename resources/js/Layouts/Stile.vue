@@ -57,9 +57,16 @@
                                     </v-list-item-title>
                                 </v-list-item>
                             </Link>
+                            <Link :href="route('admin.recapiti')">
+                                <v-list-item>
+                                    <v-list-item-title>
+                                        Recapiti
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </Link>
                             <v-list-item>
                                 <v-list-item-title>
-                                    Recapiti
+                                    Medici
                                 </v-list-item-title>
                             </v-list-item>
                         </v-list>
