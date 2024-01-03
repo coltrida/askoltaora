@@ -20,6 +20,7 @@ class ListinoSeeder extends Seeder
                 'nome' => 'Beltone'.$i,
                 'fornitore_id' => 1,
                 'categoria_id' => 1,
+                'costo' => rand(150, 250),
                 'prezzolistino' => rand(1,4) * 1024,
                 'giorniTempoDiReso' => rand(60,90),
             ]);
@@ -30,6 +31,7 @@ class ListinoSeeder extends Seeder
                 'nome' => 'accessBelt'.$i,
                 'fornitore_id' => 1,
                 'categoria_id' => 2,
+                'costo' => rand(150, 250),
                 'prezzolistino' => rand(1,4) * 1024,
                 'giorniTempoDiReso' => rand(60,90),
             ]);
@@ -40,6 +42,7 @@ class ListinoSeeder extends Seeder
                 'nome' => 'Istant'.$i,
                 'fornitore_id' => 2,
                 'categoria_id' => 1,
+                'costo' => rand(150, 250),
                 'prezzolistino' => rand(1,4) * 1024,
                 'giorniTempoDiReso' => rand(60,90),
             ]);
@@ -50,6 +53,7 @@ class ListinoSeeder extends Seeder
                 'nome' => 'accessIstant'.$i,
                 'fornitore_id' => 2,
                 'categoria_id' => 2,
+                'costo' => rand(150, 250),
                 'prezzolistino' => rand(1,4) * 1024,
                 'giorniTempoDiReso' => rand(60,90),
             ]);

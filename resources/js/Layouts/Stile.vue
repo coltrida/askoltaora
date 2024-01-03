@@ -17,7 +17,13 @@
                     </v-btn>
                 </Link>
 
-                    <v-menu>
+                <Link :href="route('admin.clienti')">
+                    <v-btn :variant="$page.component === 'Admin/Clienti' ? 'tonal' : 'text'">
+                        Pazienti
+                    </v-btn>
+                </Link>
+
+<!--                    <v-menu>
                         <template v-slot:activator="{ props }">
                             <v-btn :variant="$page.component === 'Admin/Tags' ? 'tonal' : 'text'"  v-bind="props">
                                 Clients
@@ -41,7 +47,7 @@
                                 </v-list-item-title>
                             </v-list-item>
                         </v-list>
-                    </v-menu>
+                    </v-menu>-->
 
                     <v-menu>
                         <template v-slot:activator="{ props }">
@@ -112,11 +118,13 @@
                                     </v-list-item-title>
                                 </v-list-item>
                             </Link>
-                            <v-list-item>
-                                <v-list-item-title>
-                                    Prodotti
-                                </v-list-item-title>
-                            </v-list-item>
+                            <Link :href="route('admin.listino')">
+                                <v-list-item>
+                                    <v-list-item-title>
+                                        Listino
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </Link>
                         </v-list>
                     </v-menu>
 
@@ -127,14 +135,20 @@
                             </v-btn>
                         </template>
                         <v-list>
+                            <Link
+                                v-for="(item, index) in filiali"
+                                :key="index"
+                                :href="route('user.clienti', item.id)"
+                            >
+                                <v-list-item>
+                                    <v-list-item-title>
+                                        {{item.nome}}
+                                    </v-list-item-title>
+                                </v-list-item>
+                            </Link>
                             <v-list-item>
                                 <v-list-item-title>
-                                    Civitanova
-                                </v-list-item-title>
-                            </v-list-item>
-                            <v-list-item>
-                                <v-list-item-title>
-                                    Fabriano
+                                    TUTTE
                                 </v-list-item-title>
                             </v-list-item>
                         </v-list>

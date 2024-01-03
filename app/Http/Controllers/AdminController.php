@@ -7,6 +7,7 @@ use App\Services\CategoriaService;
 use App\Services\FilialeService;
 use App\Services\FornitoreService;
 use App\Services\DottoreService;
+use App\Services\ListinoService;
 use App\Services\RecapitoService;
 use App\Services\RuoloService;
 use App\Services\StatoApaService;
@@ -20,6 +21,15 @@ class AdminController extends Controller
     public function home()
     {
         return Inertia::render('Admin/Home');
+    }
+
+    public function clienti(TipologiaService $tipologiaService,
+                            FilialeService $filialeService)
+    {
+        return Inertia::render('Admin/Clienti', [
+            'tipologie' => $tipologiaService->lista(),
+            'filialiConTipologiePazienti' => $filialeService->filialiConTipologiePazienti(),
+        ]);
     }
 
     public function ruoli(RuoloService $ruoloService)
@@ -159,5 +169,22 @@ class AdminController extends Controller
     public function addFornitore(Request $request, FornitoreService $fornitoreService)
     {
         $fornitoreService->addFornitore($request);
+    }
+
+    public function listino(ListinoService $listinoService,
+                            FornitoreService $fornitoreService,
+                            CategoriaService $categoriaService)
+    {
+        return Inertia::render('Admin/Listino', [
+            'listino' => $listinoService->listaPaginate(),
+            'fornitori' => $fornitoreService->lista(),
+            'categorie' => $categoriaService->lista(),
+            'filters' => \Illuminate\Support\Facades\Request::only('search')
+        ]);
+    }
+
+    public function addListino(Request $request, ListinoService $listinoService)
+    {
+        $listinoService->addListino($request);
     }
 }

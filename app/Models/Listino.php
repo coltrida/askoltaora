@@ -11,9 +11,19 @@ class Listino extends Model
     protected $guarded = [];
     protected $table = 'listinos';
 
+    public function setNomeAttribute($value)
+    {
+        $this->attributes['nome'] = strtoupper($value);
+    }
+
     public function getPrezzoFormattatoAttribute()
     {
         return $this->prezzolistino ? '€ '.number_format( (float) $this->prezzolistino, '0', ',', '.') : null;
+    }
+
+    public function getCostoFormattatoAttribute()
+    {
+        return $this->costo ? '€ '.number_format( (float) $this->costo, '0', ',', '.') : null;
     }
 
     public function categoria()

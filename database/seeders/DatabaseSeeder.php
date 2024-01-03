@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(DottoriSeeder::class);
         $this->call(CanaliSeeder::class);
         $this->call(ConfigurationSeeder::class);
-//        $this->call(ListinoSeeder::class);
+        $this->call(ListinoSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(ClientSeeder::class);
 //        $this->call(ProdottiSeeder::class);
